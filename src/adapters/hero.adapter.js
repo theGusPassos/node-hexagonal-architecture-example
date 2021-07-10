@@ -1,11 +1,7 @@
-import { v4 as uuidv4 } from 'uuid'
-
 const toInternal = (external) => {
   return {
-    id: uuidv4(),
     name: external.name,
     level: external.level,
-    createdAt: new Date(),
   }
 }
 
