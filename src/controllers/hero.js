@@ -1,12 +1,12 @@
-const getAll = (req, res) => {
-  res.send([]);
-};
+const getAll = (_, res) => {
+  res.send([])
+}
 
-const create = (req, res) => {
-  res.send([]);
-};
+const create = (_, res) => {
+  res.send([])
+}
 
-module.exports = {
+export default {
   getAll,
   create,
-};
+}

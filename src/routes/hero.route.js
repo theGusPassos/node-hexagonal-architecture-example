@@ -1,9 +1,9 @@
-const express = require("express");
-const router = express.Router({ mergeParams: true });
+import { Router } from 'express'
+import { getAll, create } from '../controllers/hero'
 
-const controller = require("../controllers/hero");
+const router = Router({ mergeParams: true })
 
-router.route("/").get(controller.getAll);
-router.use("/").post(controller.create);
+router.route('/').get(getAll)
+router.use('/').post(create)
 
-module.exports = router;
+export default router
