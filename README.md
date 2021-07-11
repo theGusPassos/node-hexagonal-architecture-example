@@ -41,8 +41,10 @@ uses the logic, adapters and ports to return the desired result to the caller
 
 ### running tests
 
+- `npm test`
 
 ## api
 
-query all heroes
-create a hero
+- `curl http://localhost:6123/heroes`
+
+- `curl -d '{"name":"hero name","level": 1}' -H "Content-Type: application/json" -X POST http://localhost:6123/heroes`
