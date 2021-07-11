@@ -1,16 +1,25 @@
+import * as R from 'ramda'
 import heroAdapter from '../adapters/hero.adapter'
 import heroLogic from '../logic/hero.logic'
 import heroDb from '../db/hero.db'
 
-const getAll = async(_, res, next) => {
-  const heroes = await heroDb.getAll()
-  res.send(heroes.map(heroAdapter.toExternal))
+const then = f => p => p.then(f)
+
+const getAll = async(_, res) => {
+  R.pipe(
+    heroDb.getAll,
+    then(heroes => heroes.map(heroAdapter.toExternal)),
+    then(heroes => res.send(heroes)),
+  )()
 }
 
 const create = async(req, res) => {
-  const heroToCreate = heroLogic.createHero(heroAdapter.toInternal(req.body))
-  const heroCreated = await heroDb.createHero(heroToCreate)
-  res.send(heroCreated)
+  R.pipe(
+    heroAdapter.toInternal,
+    heroLogic.createHero,
+    heroDb.saveHero,
+    then(savedHero => res.send(savedHero)),
+  )(req.body)
 }
 
 export default {

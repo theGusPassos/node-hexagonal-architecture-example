@@ -4,6 +4,7 @@ A simple API with hexagonal architecture.
 
 ## built with
 - express
+- ramda
 - eslint
 - jest
 
