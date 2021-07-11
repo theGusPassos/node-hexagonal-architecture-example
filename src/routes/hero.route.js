@@ -1,9 +1,9 @@
-import { Router } from 'express'
-import { getAll, create } from '../controllers/hero'
+import heroController from '../controllers/hero'
+import asyncHandler from 'express-async-handler'
 
-const router = Router({ mergeParams: true })
+const addRoutes = (router) => {
+  router.get('/heroes', asyncHandler(heroController.getAll))
+  router.post('/heroes', asyncHandler(heroController.create))
+}
 
-router.route('/').get(getAll)
-router.use('/').post(create)
-
-export default router
+export default { addRoutes }

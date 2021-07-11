@@ -1,10 +1,11 @@
 {
   "name": "hexagonal-architecture-example",
+  "type": "module",
   "version": "1.0.0",
   "description": "simple example of hexagonal architecture with node",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node --experimental-modules --es-module-specifier-resolution=node src/index",
     "pretest": "eslint --ignore-path .gitignore .",
     "test": "jest"
   },
@@ -12,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

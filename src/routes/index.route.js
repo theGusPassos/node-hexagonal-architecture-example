@@ -1,21 +1,25 @@
 import { Router } from 'express'
 import heroes from './hero.route'
 
-const router = Router()
+const createRouter = () => {
+  const router = Router()
 
-router.use('/heroes', heroes)
+  heroes.addRoutes(router)
 
-router.get('/', (_, res) =>
-  res.send('Sample Node API with hexagonal architecture'),
-)
+  router.get('/', (_, res) =>
+    res.send('Sample Node API with hexagonal architecture'),
+  )
 
-router.get('/health', (_, res) => {
-  const healthcheck = {
-    uptime: process.uptime(),
-    message: 'OK',
-    timestamp: Date.now(),
-  }
-  res.send(JSON.stringify(healthcheck))
-})
+  router.get('/health', (_, res) => {
+    const healthcheck = {
+      uptime: process.uptime(),
+      message: 'OK',
+      timestamp: Date.now(),
+    }
+    res.send(JSON.stringify(healthcheck))
+  })
 
-export default router
+  return router
+}
+
+export default { createRouter }
