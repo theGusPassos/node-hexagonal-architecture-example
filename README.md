@@ -17,7 +17,7 @@ A simple API with hexagonal architecture.
 
 ### logic
 
-pure business logic with pure functions
+business logic with pure functions
 
 ### adapters
 
