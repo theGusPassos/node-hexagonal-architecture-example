@@ -1,4 +1,4 @@
-import heroAdapter from '../../src/adapters/hero.adapter'
+import heroLogic from '../../src/logic/hero.logic'
 import faker from 'faker'
 import { expect } from '@jest/globals'
 
@@ -9,7 +9,7 @@ describe('hero.logic', () => {
       level: faker.datatype.number(100),
     }
 
-    const internal = heroAdapter.toInternal(external)
+    const internal = heroLogic.createHero(external)
 
     expect(internal).toMatchObject(external)
     expect(internal.id).toBeDefined()
