@@ -5,7 +5,7 @@ import heroDb from '../db/hero.db'
 
 const then = f => p => p.then(f)
 
-const getAll = async(_, res) => {
+const getAll = (_, res) => {
   R.pipe(
     heroDb.getAll,
     then(heroes => heroes.map(heroAdapter.toExternal)),
@@ -13,7 +13,7 @@ const getAll = async(_, res) => {
   )()
 }
 
-const create = async(req, res) => {
+const create = (req, res) => {
   R.pipe(
     heroAdapter.toInternal,
     heroLogic.createHero,

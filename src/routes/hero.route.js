@@ -1,9 +1,8 @@
 import heroController from '../controllers/hero'
-import asyncHandler from 'express-async-handler'
 
 const addRoutes = (router) => {
-  router.get('/heroes', asyncHandler(heroController.getAll))
-  router.post('/heroes', asyncHandler(heroController.create))
+  router.get('/heroes', heroController.getAll)
+  router.post('/heroes', heroController.create)
 }
 
 export default { addRoutes }
