@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node --experimental-modules --es-module-specifier-resolution=node src/index",
     "pretest": "eslint --ignore-path .gitignore .",
-    "test": "jest"
+    "test": "jest --testPathPattern=.test.js",
+    "test:i": "jest --testPathPattern=int.spec.js"
   },
   "author": "",
   "license": "ISC",
